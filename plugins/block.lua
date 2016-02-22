@@ -1,6 +1,5 @@
 do
--- https://github.com/SEEDTEAM/TeleSeed --
-local function block_user_callback(cb_extra, success, result)
+  local function block_user_callback(cb_extra, success, result)
   local receiver = cb_extra.receiver
   local user = 'user#id'..result.id
   if success == 0 then
