@@ -1,8 +1,8 @@
 -- By Mohamed_devt { @MD_IQ19 }
 
 -- how to use inside telegram --
--- if you want to see fuck use this command /fuck lock
--- if you want to disable the protection use this command /fuck unlock
+-- if you want to see fosh use this command /fosh lock
+-- if you want to disable the protection use this command /fosh unlock
 -- if you want to check the protection use this command /link ? 
 
 -- a function that i make to cut the command and the / from the text and send me the text after the command  
@@ -16,9 +16,9 @@
 
 local XCommands = 
 {
-    LockCommand = "lock", -- The command to lock the fuck see
-    UnlockCommand = "unlock", -- The command to unlock the fuck see
-    CheckCommand = "?" -- The command to check for the statue of the fuck see
+    LockCommand = "lock", -- The command to lock the fosh see
+    UnlockCommand = "unlock", -- The command to unlock the fosh see
+    CheckCommand = "?" -- The command to check for the statue of the fosh see
 }
 
 local msgs = 
@@ -29,7 +29,7 @@ local msgs =
     already_unlocked = "鬲賲 亘丕賱賮毓賱 丕賷賯丕賮 鬲賮毓賷賱 賲囟丕丿 丕賱賰賱賲丕鬲 丕賱爻賷卅丞", -- the message that sent when you try to unlock the fuck and it's already unlocked
     UnLocked = "鬲賲 丕賱睾丕亍 鬲賮毓賷賱 賲囟丕丿 丕賱賰賱賲丕鬲 丕賱爻賷卅丞, 賷賲賰賳賰 賯賵賱 賲丕鬲卮丕亍 馃槖馃檶馃徔", -- the message that send when you unlock the fuck
 
-    statue = { Locked2 = "The fuck see is locked here", UnLocked2 = "The fuck see is unlocked here" }
+    statue = { Locked2 = "The fosh see is locked here", UnLocked2 = "The fosh see is unlocked here" }
 }
 
 
@@ -44,17 +44,17 @@ local function run(msg, matches)
     local data = load_data(_config.moderation.data)
 
     if ( is_realm(msg) and is_admin(msg) or is_sudo(msg) or is_momod(msg) ) then
-        -- check if the command is lock and by command i mean when you write /fuck lock   : lock here is the command
+        -- check if the command is lock and by command i mean when you write /fosh lock   : lock here is the command
         if ( matches[2] == XCommands.LockCommand ) then
             
-            -- check if the LockFuck is already yes then tell the user and exit out 
+            -- check if the LockFosh is already yes then tell the user and exit out 
             if ( data[tostring(msg.to.id)]['settings']["Lockfuck"] == "yes" ) then
                 send_large_msg ( receiver , msgs.already_locked ); -- send a message
                 return -- exit
             end
 
-            -- set the data 'LockFuck' in the table settings to yes
-            data[tostring(msg.to.id)]['settings']['LockFuck'] = "yes"
+            -- set the data 'LockFosh' in the table settings to yes
+            data[tostring(msg.to.id)]['settings']['LockFosh'] = "yes"
         
             -- send a message
             send_large_msg(receiver, msgs.Locked)
@@ -63,13 +63,13 @@ local function run(msg, matches)
         elseif ( matches[2] == XCommands.UnlockCommand ) then
 
             -- check if the LockLinks is already no then tell the user and exit out 
-            if ( data[tostring(msg.to.id)]['settings']['LockFuck'] == "no" ) then
+            if ( data[tostring(msg.to.id)]['settings']['LockFosh'] == "no" ) then
                 send_large_msg ( receiver , msgs.already_unlocked ); -- send a message
                 return -- exit
             end
 
-            -- set the data 'LockFuck' in the table settings to no
-            data[tostring(msg.to.id)]['settings']['LockFuck'] = "no"
+            -- set the data 'LockFosh' in the table settings to no
+            data[tostring(msg.to.id)]['settings']['LockFosh'] = "no"
         
             -- send a message
             send_large_msg(receiver, msgs.UnLocked)
@@ -103,8 +103,8 @@ end
 return {
     -- the patterns 
     patterns = {
-        -- the command will be like /fuck <arg> { the arg can be "?" or "lock" or "unlock" } 
-        "^(/[Ff][Uu][Cc][Kk]) (.+)"
+        -- the command will be like /fosh <arg> { the arg can be "?" or "lock" or "unlock" } 
+        "^(/[Ff][Oo][Ss][Hh]) (.+)"
     },
     run = run
 }
